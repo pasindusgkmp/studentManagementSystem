@@ -10,7 +10,19 @@
 </head>
 <body class="container">
     <form class="mt-5" action="{{ route('students.store') }}" method="POST">
-        @csrf
+    @csrf
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">First Name</label>
     <input type="text" class="form-control" name="firstname" placeholder="Enter First Name">

@@ -20,7 +20,18 @@ class Studentscontroller extends Controller
     }
     public function store(Request $request)
     {
+        $rules = [
+            'firstname' => 'required|string|max:255',
+            
+        ];
+
+        $validatedData = $request->validate($rules);
         
+    //    if($validatedData->fails()){
+    //         return redirect()->back()->withErrors($validatedData)->withInput();
+    //     }
+
+
         $student = new Student();
         $student->first_name = $request->input('firstname');
         $student->last_name = $request->input('lastname');
