@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
+
 
 class Studentscontroller extends Controller
 {
@@ -19,7 +21,15 @@ class Studentscontroller extends Controller
     public function store(Request $request)
     {
         
-        return $request;
+        $student = new Student();
+        $student->first_name = $request->input('firstname');
+        $student->last_name = $request->input('lastname');
+        $student->contact_no = $request->input('contactno');
+        $student->address = $request->input('address');
+        $student->birthday = $request->input('birthday');
+        $student->save();
+
+        return 'success';
     }
 }
 
